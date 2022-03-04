@@ -3873,11 +3873,11 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		background-attachment: fixed;
+		background-attachment: scroll;
 		background-image: url("images/moon.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;
-		background-size: 100% 100%;
+		background-size: 100% 250%;
 	}
 
 		#intro p {
