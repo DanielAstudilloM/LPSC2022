@@ -13,180 +13,167 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
+		<div>
+			<a href="https://www.ufexpet.com/"><img src="images/Round-Logo_White.png" class="logo"/></a>
+			</div>
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
 						<ul>
 							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#two">Assessing accuracy of modelling software</a></li>
 							<li><a href="#one">Modelling Software</a></li>
-							<li><a href="#two">What we do</a></li>
-							<li><a href="#three">Get in touch</a></li>
 						</ul>
 					</nav>
 				</div>
 			</section>
-
+			
 		<!-- Wrapper -->
 			<div id="wrapper">
-
+			
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>Hello there!</h1>
-							<p>I am Daniel Astudillo Manosalva, PhD student at UF and 
-								 have dedicated this space for explaining how I have developed the codes 
-								I have used for automating the processing of multiple compositions through pMELTS
-								 MAGPOX and Perple_X for creating the phase diagrams I have used in my work shown 
+							<p style="background-color:rgba(48, 46, 46, 0.671);">I am Daniel Astudillo Manosalva, PhD student at UF working 
+								with Steve Elardo and 
+								 have dedicated this space for explaining how we have developed the codes 
+								we have used for automating the processing of multiple compositions through pMELTS
+								 MAGPOX and Perple_X for creating the phase diagrams we have used in our work shown 
 								 here at LPSC 2022 and a soon to come publication.</p>
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">See What software we used!</a></li>
 							</ul>
 						</div>
 					</section>
-
+				<!-- Two -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h2>Assesing Accuracy of Modelling Software with Lunar and Martian Basaltic Compositions</h2>
+						<p>
+							There haven't been studies dedicated to assess if the software used for modelling 
+							equilibrium of phases in lunar basalts. It has been done previously for Earth
+							 (<a href="https://doi.org/10.1093/petrology/egh043">Asimow and Longhi, 2004</a>)
+							 and for Mars (<a href="https://doi.org/10.1002/2013JE004461">Balta and McSween, 2013</a>)
+							 We decided to explore this by modelling the compositions of known primary basalts and seeing where their Multiple 
+							 Saturation Points (MSPs) were predicted in relation to their experiments. Initially we began doing this through 
+							 MAGPOX and pMELTS, but recently added Perple_X with excellent results.
+						</p>
+						<div class="features">
+							<section>
+								<h3>MSPs</h3>
+								<p>We focus on MSPs at the liquidus of basalts and picritic glasses because they are one of the most useful tools for 
+									exploring the distribution of cumulate sources
+									in the lunar mantle. They accurately reflect the depths at which primary basalts form at, and the phases that melt 
+									to do so. They also are a single point in phase diagrams that allows to check how accurately the olivine and pyroxene
+									stability fields are modeled.
+								</p>
+							</section>
+							<section>
+								<h3>Lunar Samples</h3>
+								<p>A set of 21 compositions of mare basalts, picritic glasses and meteorites were selected given their primary or 
+									near-primary compositions, with well known experiments that show MSPs. The range of samples also cover much of 
+									the Ti and Mg ranges for lunar basalts, as well as a range of a billion years of lunar products.
+								</p>
+							</section>
+							<section>
+								<h3>Martian Samples</h3>
+								<p>We took 4 of the samples already studied by <a href="https://doi.org/10.1002/2013JE004461">Balta and McSween, 2013</a>, 
+									which also correspond to near-primary basalts for 2 main reasons: To corroborate our results with previous ones; 
+									and because comparing the martian subset with a larger dataset was probably going to give better results, 
+									which it did.</p>
+							</section>
+							<section>
+								<h3>Modifying or Adapting to the Software</h3>
+								<p>
+									We are working with 3 different software, written in Fortran and C a long time ago, designed for use through 
+									single threaded calculations for a single set of compositions and conditions at a time. All software operates 
+									through their own interface using the command console or a GUI. We modified and adapted to each program in order 
+									to work through our own interface in which we could automate calculations as well as the data processing.
+								</p>
+							</section>
+							<section>
+								<h3>Python</h3>
+								<p>Having previous experience and knowing the benefits of working in Python made it an easy choice for the language
+									to work with. We started with simple scripts for bypassing input and automation of multiple compositions, which 
+									eventually resulted in complex multifunctional libraries which also contain file management, data processing and 
+									additional tools for working with the resulting data.
+								</p>
+							</section>
+							<section>
+								<h3>It Doesn't End Here</h3>
+								<p>
+									These software have proven many times over their usefulness in petrology and geochemistry, and we are convinced that 
+									thay are only just starting to prove how far they can take us. By removing some of the barriers that difficulted 
+									the use of these programs it is now easier than ever to explore your petrologic ideas through modelling. We have already 
+									started doing so with our good friend Kim Cone, by currently working on an automatic Lunar Magma Ocean crystallization 
+									modeler using Perple_X.
+								</p>
+							</section>
+						</div>
+						<ul class="actions">
+							<li><a href="https://www.hou.usra.edu/meetings/lpsc2022/pdf/2100.pdf" class="button">Read the abstract</a></li>
+						</ul>
+					</div>
+				</section>
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							<a href="pmelts.html" class="image"><img src="images/pMELTS_diagram.png" alt="" data-position="center center" /></a>
 							<div class="content">
 								<div class="inner">
 									<h2>pMELTS</h2>
-									<p>Probably the most popular tool for modelling fractional and equilibrium crystallization</p>
+									<p> Developed 20 years ago from the original MELTS program by Mark Ghiorso and collaborators, it is probably the most 
+										popular tool for modelling fractional and equilibrium crystallization of mantle and crustal compositions, 
+										given that it has an approachable interface through which to work from. However, running several 
+										compositions over multiple conditions proves to be a very repetitive and monotonous experience, 
+										as all of the input has to be done manually each time. A way to automate this process was needed 
+										for our project, or otherwise it would have taken several months just to calculate everything we did.
+									</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="pmelts.html" class="button">See What We Wrote to Avoid This!</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+							<a href="MAGPOX.html" class="image"><img src="images/magfox_magpox.jpg" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
 									<h2>MAGPOX</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<p>A niche program developed by John Longhi almost 30 years ago to model equilibrium of mantle 
+										and lunar basalts. It is a quick and effective way to approximate crystallization that has been 
+										mostly used by our lunar community in combination with the sibling programs MAGFOX and FXMOTR for 
+										fractional crystallization and a mixed approach focused on crystallization of the lunar magma ocean, 
+										respectively. These are old Fortran codes designed for sigular calculations under one temperature-pressure 
+										path, which we modified for automation and data management.
+									</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="MAGPOX.html" class="button">Lighting Fast Calculations, See How!</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
+							<a href="Perple_X.html" class="image"><img src="images/perple_x.png" alt="" data-position="25% 25%" /></a>
 							<div class="content">
 								<div class="inner">
 									<h2>Perple_X</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<p>A metamorfic petrologist favorite with a very active community, and in active development for over 30 years by 
+										James Connolly. It is designed for the construccion of phase diagrams for many different types of rocks, as 
+										it allows to do calculations from various thermodynamic approaches. It is a very thorough software that 
+										performs several complex numerical calculations each time, which is why it can take several hours to process 
+										a single composition. We had 25! At a minimum of 2 hours per calculation it would take over 2 days to process 
+										all of them. Any error or undesirable result would mean over 2 days of work lost... and that just wasn't acceptable.
+									</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="Perple_X.html" class="button">Multi-processing saved us, see how!</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 					</section>
-
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>What we do</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-link"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-gem"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
-
-				<!-- Three -->
-					<!-- <section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(000) 000-0000</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section> -->
 
 			</div>
 
@@ -194,7 +181,7 @@
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; Daniel Astudillo. All rights reserved.</li><li>Design: Modified from Hyperspace template from <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
