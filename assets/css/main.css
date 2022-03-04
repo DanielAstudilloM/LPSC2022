@@ -3874,10 +3874,10 @@ input, select, textarea {
 
 	#intro {
 		background-attachment: scroll;
-		background-image: url("images/moon.jpg");
+		background-image: url("images/moon2.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;
-		background-size: 100% 250%;
+		background-size: 80% 250%;
 	}
 
 		#intro p {
