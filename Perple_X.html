@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Hyperspace by HTML5 UP</title>
+		<title>Perple_X</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -16,8 +16,8 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
-				<nav>
+				<a href="index.html" class="title">Evolving Software</a>
+				<nav class="navbar">
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="generic.html" class="active">Generic</a></li>
@@ -32,10 +32,74 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">A Generic Page</h1>
+							<h1 class="major">How we used Perple_X</h1>
 							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<h2>How Perple_X works</h2>
+							<p>
+								Perple_X works by creating an initializer file through a function called "build" where you define 
+								the conditions, calibration and composition you want to model. That file can then be used as the basis 
+								for most functions where the modelling happens. We use "vertex" which processes the build file so that phase 
+								diagrams can be constructed through a function called "pssect" and the compositional data on any point of 
+								that phase diagram can be extracted through another function called "werami". 
+							</p>
+
+							<p>The build function produces a text file with all the information necessary to use the vertex function, and to 
+								run the program multiple times with different compositions or conditions, you have to either create 
+								a new build file or manually modify the first text file. All the other functions work by calling the name of 
+								the existing build file by using the parameters described into it in combination with a set of default options 
+								on a separate file, which can be modified manually. The result is a series of text files that contain the 
+								calculated information of the chemistry and physical properties of calculated phases, which are turned into a 
+								postscript file with the drawn phase diagram.
+							</p>
+							<h2>The problem</h2>
+							<p>
+								Unlike pMELTS and MAGPOX, with Perple_X we only need to do one calculation to get the phase diagram of each composition, 
+								meaning that, in the end, we will only need 25 calculations instead of over 300. However, this takes a long time, from 
+								2 to almost 5 hours depending on the composition under our set of conditions and settings. This means that using a single 
+								thread it would have taken over 2 days to process everything, plus the time to set up the build files for all compositions 
+								and manually running them all through the console. Also, this time, we did not have access to the source code, but given 
+								the way the software is built, I doubt we would have been able to change too much without breaking the program.
+							</p>
+							<h2>Our Solution</h2>
+							<p>
+								Luckily, Perple_X works through a written interface on the command console, meaning that we could bypass all input using 
+								redirection and pipeline commands, thus making the automation process a matter of just preparing the appropriate text files 
+								to redirect to. We recorded all the input we needed for a build file, saved it as a template and automated the process 
+								by creating new files through the template while changing each composition and redirecting the build function to those files. 
+								However, even though we can save plenty of time with the automation, it wasn't much compared to the total processing time. 
+								Having over 2 days of processing means that any time we would need to tweak or change something we would be spending 2 days 
+								more, while we were figuring out the optimal way to get to the results we wanted. So, I noticed that, while running a single 
+								composition, I was only using up to 15% of my cpu processing capacity and very little memory. Therefore, if we did parallel 
+								processing of as many compositions as my computer could manage we would be saving a lot of time. Initially we tried Python's 
+								incorporated multiprocessing library, but due to an unexpected bug, we decided to just go old-school and run them
+								through batch scripts that contained 5 compositions each at the same time. With this, we managed tu cut the time to about 10 
+								hours, about 3/4 of the original time! And, as predicted, we did have to tweak quite a few things to get to our results (which 
+								can still be improved quite a bit) so it took about a week of running the software over night and analizing the results during 
+								the day. Had we not done this, it would have taken over a month just to do everything the same way, but it would probably have 
+								been much more.
+							</p>
+							<h2>Data Processing</h2>
+							<p>
+								Having ran every composition through the vertex function, getting the phase diagrams was just a matter of writing a simple 
+								function for a batch script where every composition name was pipelined to the pssect function, with corresponding input, 
+								which just gave us the phase diagrams, where we only had to locate the multiple saturation points. Additionally, to get a 
+								proper organization of the data, we designed a file management system to get all results in one place and to keep the 
+								software folder free from unnecessary files.
+							</p>
+							<h2>A tool in the shed</h2>
+							<p>
+								Perple_x, just like with MELTS and MAGPOX, their use it is often considered a challenge, if not of as a full project, due to their steep learning 
+								curve and difficulties of use. We believe that this needs to change, these programs are incredible tools with an even more 
+								incredible potential, and great people went through a titanic effort over decades so that we could have a chance to use them. 
+								If we remove their difficulties of use and unify the way we interface to them, we can provide an environment where 
+								they can be combined in any way possible with other types of tools to expand their use to as far as creativity can go. 
+								</p>
+								<p>
+								They way I like to think of it is that the 3 programs are equivalent to three hammers of different sizes, designed to hit similar nails 
+								but on different contexts. What we have done here is essentially turn these hammers into nail guns, and if we combine 
+								them with a woodcutter we will be able to build anything between a chair and a house. How many tools you think we can fit in our 
+								shed? What would you like to build? I assure you, it can be done if we keep working on this.
+							</p>
 						</div>
 					</section>
 
