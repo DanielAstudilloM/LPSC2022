@@ -41,26 +41,53 @@
 							</ul>
 							<h2>How MAGPOX works</h2>
 							<p>
-								 
+								This is a question that I believe many have asked several times before getting a slight idea of what John Longhi designed 
+								this program from. In essence, MAGPOX tries to replicate the behavior of crystallizing melts from a set of phase diagrams 
+								and phase relations from known systems. From the composition input, it draws a line in temperature and pressure and returns 
+								the conditions and compositions of stable phases all throughout it. However, there is one disadvantage to this program, it 
+								is meant for liquids and conditions where olivine is the phase at the liquidus, which means it's limited to Mg-rich compositions 
+								at low pressures. Despite this, we know that the modelling will only become unstable once the MSP is reached, so we can 
+								still see where it occurs.
 							</p>
 
 							<p>
+								So, MAGPOX results can only be reliable at pressures before the MSP at the liquidus is reached and anything beyond it shoud be 
+								ignored, especially since it forces olivine as the first appearance and pyroxene is not allowed to form at higher temperatures than 
+								the defined olivine curve. Despite this, the program is known for being accurate for the settings it was made for and has been 
+								used in many different studies effectively.
 							</p>
 							<h2>The problem</h2>
 							<p>
-								
+								We have already established that for our intentions of finding MSPs, MAGPOX is a plausible tool to use, despite its limitations. 
+								It also has the benefit that calculations are almost instant and running multiple samples is computationally inexpensive, so, 
+								why do we need to modify it?
+							</p>
+							<p>
+								To begin with, the method of calculating stability over a single line of pressure and temperature makes it hard to plot 
+								complete phase diagrams, as we need several calculations over different conditions to get resolution enough for a basic diagram. 
+								The program interface requires either manual input of the entire composition and conditions, or manual confirmation to use a 
+								text file that contains all data. To make the process as fast as possible, we had to find a way to remove any manual input.
+							</p>
+							<p>
+								Additionally, we needed a way to easily get the generated results and combine them in a way where we could construct the phase 
+								diagrams. The Fortran output is particularly unfriendly to work with so we had to find a solution to this as well.
 							</p>
 							<h2>Our Solution</h2>
 							<p>
-								
+								Luckily, we had access to the source code, which has been published with Jesse Davenport's SPICES programs, which are ports of 
+								the original Fortran programs into MATLAB, which we did not need to use this time. With a little understanding of Fortran, we 
+								were able to bypass the manual input directly from the source code and automated the input directly from variables in the Python 
+								script, with control over all the required variables within a single function. The end result was processing all 25 compositions 
+								in over 300 calculations, completely processed in less than a minute.
 							</p>
 							<h2>Data Processing</h2>
 							<p>
-								
-							</p>
-							<h2>The database</h2>
-							<p>
-
+								The program generates 4 files for any given run containing information about phase composition and stability. This meant that 
+								in the end we had over 1200 files to manage and process from which to create our phase diagrams. First we designed a system for 
+								file management where we could contain our data in isolated folders for each composition used. Then we modified the results files 
+								to change the unfriendly Fortran textfiles into something that we could process through Python. Being able to read the data 
+								properly, we then only had to generate an image with the phase relations, which we did initially by using GMT, but then moved to 
+								Matplolib. From the phase diagrams we only needed to visually identify the MSP and record the temperature and pressure conditions.
 							</p>
 							<h2>A tool in the shed</h2>
 							<p>
@@ -85,7 +112,7 @@
 								A full version of the code is available through GitHub	
 								<a href="https://github.com/DanielAstudilloM/Auto-MAGPOX" class="icon brands fa-github" target="_blank" rel="noreferrer noopener">
 									<span class="label">Github</span></a>. 
-								Full code will be released at publication.
+								An improved version of the code will be released at publication.
 							</p>
 						</div>
 						</div>
