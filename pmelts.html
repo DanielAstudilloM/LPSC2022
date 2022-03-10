@@ -41,26 +41,59 @@
 							</ul>
 							<h2>How pMELTS works</h2>
 							<p>
-								 
+								All the MELTS programs work through numerical minimizations of the Gibbs free energy of a multi-component system 
+								and determining phase stability through temperature pressure paths, either by equilibrium or fractional crystallization. 
+								It has 4 different versions designed for different kinds of melts. The original MELTS calibration, kept in the now called 
+								Rhyolite-MELTS can be used for all types of melts and is optimized for pressures below 1 GPa. Two varieties of Rhyolite-MELTS 
+								are also designed for working with evolved melts and water and CO<sub>2</sub> saturated melts. The fourth version is pMELTS, 
+								designed from an extensive database for peridotitic melts, including lunar compositions, and it is designed only to model 
+								crystallization (or melting) of mantle peridotitic melts at pressures between 1-3 GPa.
 							</p>
-
+								
 							<p>
+								MELTS is a very popular tool among petrologist of all areas, which in part is due to its friendly graphical user interface (GUI) 
+								which allows to easily modify compositions, pressure and temperature conditions, oxygen fugacity and even allow for modelling through 
+								entalpy and volume changes of the system. But also because of the thourough calculations and quality of results it generates.
 							</p>
 							<h2>The problem</h2>
 							<p>
-								
+								Similar to MAGPOX, the program is friendly for single path calculations, but the generation of phase diagrams requires multiple 
+								calculations for each composition, for which the GUI actually makes the process more difficult. We needed a way to bypass it completely, 
+								which was hard since, even though we have access to the source code, we would never dream of doing such a complicated modification 
+								to such a complicated program. 
 							</p>
 							<h2>Our Solution</h2>
 							<p>
-								
+								Luckily though, and with a little help from Mark Ghiorso himself, we were able to set up a version 
+								of the program called MELTS-batch, which was already designed to bypass the interface for equilibrium crystallization. We also 
+								modified it so it would default calculations to the pMELTS calibration, which required a slight modification of the source code. 
+								There is one detail that we were not able to solve by using this version, the GUI version allows to modify oxygen fugacity in 
+								terms of the buffers (Ex, IW+1, IW-2, QFM+7), and although the option was available for input using the new format, it did not 
+								work, so we had to default to the IW buffer.
+							</p>
+							<p>
+								The MELTS-batch version uses and xml format type of input, and we wrote our script in terms of that, which is easily modifiable 
+								and worked just fine for our purposes. We set up the automation process from that, in a similar way we did wid MAGPOX, and were 
+								able to get the over 300 calculations required automatically. Numerical modelling is not as fast as the MAGPOX calculations, 
+								so in this case it takes about 30 minutes to go through them all. There is one problem though, MELTS tends to go into an infinite 
+								loop at near or subsolidus of certain compositions, the solution to this in the GUI version is just to close the program, but 
+								on our setup it was hard to do, for reasons we have yet to understand. The only thing we could do was make it so that manually 
+								using ctrl+c stops the calculation and goes to the next one, but could not find a way for the program to do it on its own.
 							</p>
 							<h2>Data Processing</h2>
 							<p>
-								
+								pMELTS generates a very large amount of data, so we also coded a file management system to store the information. 
+								We then created a funtion to acces the information in the results and to generate the phase diagrams from it. With that, 
+								all that is left is visually finding the MSP and taking note of its physical conditions. Additionally we created a way to get the compositions of the phases near the MSP conditions to compare with the experimental 
+								results. For this reason, out of the 3 software we are working on this project, this is the most detailed one with the highest 
+								functionality.
 							</p>
 							<h2>The database</h2>
 							<p>
-
+								One thing that we were also able to do was access the pMELTS database. We designed functions to search thorugh the database 
+								for the data in terms of the phases present in the experiments and compared to the compositions we processed. This way we 
+								were able to find that the Mg-rich compositions we chose did not fit with the compositions and physichal conditions of the database.
+								With our code, anyone may be able to see where their samples plot compared to the database and how well it fits within it. 
 							</p>
 							<h2>A tool in the shed</h2>
 							<p>
